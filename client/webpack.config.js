@@ -23,7 +23,7 @@ module.exports = () => {
 
       new InjectManifest ({
         swSrc: './src-sw.js',
-        swDest: 'src-sw.js'
+        swDest: 'src-sw.js',
       }),
 
       new WebpackPwaManifest({
@@ -36,6 +36,7 @@ module.exports = () => {
         theme_color: '#225ca3',
         start_url: '/',
         publicPath: '/',
+        filename: 'manifest.json',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
@@ -59,7 +60,7 @@ module.exports = () => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
             }
           }
         }
