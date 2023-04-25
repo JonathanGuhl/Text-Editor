@@ -51,6 +51,7 @@ module.exports = () => {
       rules: [
         {
           test: /\.css$/i,
+          include: path.resolve(__dirname, 'src/css'),
           use: ["style-loader", "css-loader"]
         },
         {
@@ -61,9 +62,9 @@ module.exports = () => {
             options: {
               presets: ['@babel/preset-env'],
               plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
-            }
-          }
-        }
+            },
+          },
+        },
       ],
     },
   };
