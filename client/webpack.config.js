@@ -1,82 +1,8 @@
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const WebpackPwaManifest = require('webpack-pwa-manifest');
-// const path = require('path');
-// const { InjectManifest } = require('workbox-webpack-plugin');
-// const { INSPECT_MAX_BYTES } = require('buffer');
-
-// module.exports = () => {
-//   return {
-//     mode: 'development',
-//     entry: {
-//       main: './src/js/index.js',
-//       install: './src/js/install.js'
-//     },
-//     output: {
-//       filename: '[name].bundle.js',
-//       path: path.resolve(__dirname, 'dist'),
-//     },
-//     plugins: [
-//       new HtmlWebpackPlugin ({
-//         template: './index.html',
-//         title: 'Text Editor'
-//       }),
-
-//       new InjectManifest ({
-//         swSrc: './src-sw.js',
-//         swDest: 'src-sw.js',
-//       }),
-
-//       new WebpackPwaManifest({
-//         fingerprints: false,
-//         inject: true,
-//         name: 'Just another text editor!',
-//         short_name: 'JATE',
-//         description: 'Text editor',
-//         background_color: '#225ca3',
-//         theme_color: '#225ca3',
-//         start_url: '/',
-//         publicPath: '/',
-//         filename: 'manifest.json',
-//         icons: [
-//           {
-//             src: path.resolve('src/images/logo.png'),
-//             sizes: [96, 128, 192, 256, 384, 512],
-//             destination: path.join('assets', 'icons'),
-//           },
-//         ],
-//       }),
-//     ],
-
-//     module: {
-//       rules: [
-//         {
-//           test: /\.css$/i,
-//           use: ['style-loader', 'css-loader']
-//         },
-//         {
-//           test: /\.m?js$/,
-//           exclude: /node_modules/,
-//           use: {
-//             loader: 'babel-loader',
-//             options: {
-//               presets: ['@babel/preset-env'],
-//               plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
-//             },
-//           },
-//         },
-//       ],
-//     },
-//   };
-// };
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
-
-
-//Add and configure workbox plugins for a service worker and manifest file.
-//Add CSS loaders and babel to webpack.
+const { INSPECT_MAX_BYTES } = require('buffer');
 
 module.exports = () => {
   return {
@@ -85,43 +11,40 @@ module.exports = () => {
       main: './src/js/index.js',
       install: './src/js/install.js'
     },
-
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
-
     plugins: [
-      new HtmlWebpackPlugin({
-        template: "./index.html",
-        title: "Webpack"
+      new HtmlWebpackPlugin ({
+        template: './index.html',
+        title: 'Text Editor'
       }),
-      new InjectManifest({
-        swSrc: "./src-sw.js",
-        swDest: "src-sw.js"
+
+      new InjectManifest ({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
+
       new WebpackPwaManifest({
-        name: 'Just Another Text Editor',
-        short_name: "J.A.T.E.",
-        description: "Takes notes with JavaScript syntax highlighting",
-        start_url: "./",
-        orientation: "portrait",
-        display: "standalone",
-        background_color: "#225ca3",
-        theme_color: "#225ca3",
-        filename: 'manifest.js',
-        publicPath: "./",
         fingerprints: false,
+        inject: true,
+        name: 'Just another text editor!',
+        short_name: 'JATE',
+        description: 'Text editor',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: '/',
+        publicPath: '/',
+        filename: 'manifest.json',
         icons: [
           {
-            src: "./src/images/logo.png",
-            sizes: [96, 128, 256, 384, 512],
-            purpose: "any maskable",
-            destination: "./assets/icons",
-            
-          }
-        ]
-      })
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),
     ],
 
     module: {
@@ -129,18 +52,20 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader']
-        }, {
-          test: /^\.m?js$/,
+        },
+        {
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['@babel/transform-runtime', '@babel/plugin-proposal-object-rest-spread']
-            }
-          }
-        }
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
+            },
+          },
+        },
       ],
     },
   };
 };
+
