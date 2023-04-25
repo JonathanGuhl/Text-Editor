@@ -20,6 +20,9 @@
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.4",
+    "sass-loader": "^13.2.2",
+    "webpack": "^5.80.0"
   }
 }
