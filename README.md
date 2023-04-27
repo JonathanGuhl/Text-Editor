@@ -17,7 +17,7 @@
 
 - There's really nothing special here in terms of usage that you need to know about. It's a text editor so feel free to save code here or whatever you'd like to put in a text file. You can also install the app if you'd like by clicking the install button. You can use the app offline if you'd like. 
 
--You should expect to see this in the browser if you run it locally or through the deployment
+- You should expect to see this in the browser if you run it locally or through the deployment
 
 
 <img width="1440" alt="Jate" src="https://user-images.githubusercontent.com/119094131/234768688-ae6fe9e8-d227-420d-9da7-8c520a787bc4.png">
